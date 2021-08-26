@@ -1,0 +1,10 @@
+POST http://localhost:3001/v1/user
+Content-Type: application/json
+{
+     "name": "Ramin khodaie",
+    "compony": "bornamehrfan",
+    "address": "tabriz",
+    "phonenumber": "2345678",
+    "email": "kh.ramin44@gmail.com",
+    "password": "12345345345" 
+}
