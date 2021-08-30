@@ -1,10 +1,26 @@
-POST http://localhost:3001/v1/user
+
+
+
+POST http://localhost:3001/v1/user/login
 Content-Type: application/json
+
 {
-     "name": "Ramin khodaie",
-    "compony": "bornamehrfan",
-    "address": "tabriz",
-    "phonenumber": "2345678",
-    "email": "kh.ramin44@gmail.com",
-    "password": "12345345345" 
+    
+    "email": "kh.ramin4@gmail.com",
+    "password": "hgj8876" 
 }
+
+
+
+# POST http://localhost:3001/v1/user
+# Content-Type: application/json
+
+#   {
+#       "name": "Ramin khodaie",
+#     "compony": "bornamehrfan",
+#     "address": "tabriz",
+#     "phonenumber": "2345678",
+#     "email": "kh.ramin40099@gmail.com",
+#     "password": "hhgj8876" 
+# }
+

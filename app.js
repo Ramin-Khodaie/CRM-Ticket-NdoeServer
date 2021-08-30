@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const helmet = require("helmet");
 const morgan = require("morgan");
+const helper = require("./src/helper/hashpassword");
 
 const port = process.env.PORT || 3001;
 //API security
@@ -41,7 +42,6 @@ const ticketRouter = require("./src/router/ticket.router");
 
 // app.use(helmet());
 app.use(cors());
-
 app.use("/v1/user", userRouter);
 app.use("/v1/ticket", ticketRouter);
 app.use((req, res, next) => {
