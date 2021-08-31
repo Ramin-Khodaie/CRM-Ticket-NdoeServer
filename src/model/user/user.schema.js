@@ -32,6 +32,19 @@ const userSchema = new Schema({
     maxlength: 100,
     required: true,
   },
+
+  refreshToken: {
+    token: {
+      type: String,
+      default: "",
+      maxlength: 500,
+    },
+    createdDate: {
+      type: Date,
+      default: Date.now(),
+      required: true,
+    },
+  },
 });
 
 module.exports = {

@@ -22,4 +22,26 @@ const getUserByEmail = (email) => {
     } catch (error) {}
   });
 };
-module.exports = { insertUser, getUserByEmail };
+
+const addRefreshToken = (_id, token) => {
+  return new Promise((resolve, reject) => {
+    try {
+      userSchema
+        .findOneAndUpdate(
+          { _id },
+          {
+            $set: {
+              "refreshToken.token": token,
+              "refreshToken.createdDate": Date.now(),
+            },
+          },
+          { new: true }
+        )
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+module.exports = { insertUser, getUserByEmail, addRefreshToken };

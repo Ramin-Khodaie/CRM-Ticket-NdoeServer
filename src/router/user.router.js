@@ -2,6 +2,12 @@ const express = require("express");
 const router = express.Router();
 const { hashedPasword, comparePassword } = require("./../helper/hashpassword");
 const { insertUser, getUserByEmail } = require("../model/user/user.model");
+const {
+  accessToken,
+  refreshToken,
+  createAccessToken,
+  createRefreshToken,
+} = require("../helper/JWTtoken");
 
 router.all("/", (req, res, next) => {
   // console.log(name);
@@ -43,10 +49,16 @@ router.post("/login", async (req, res) => {
   const passFromDB = user && user.password;
 
   const result = await comparePassword(password, passFromDB);
-  if (result) {
-    res.json({ status: "success", message: "successfuly logged in.", user });
-  } else {
-    res.json({ status: "error", message: "Invalid email or password" });
+  if (!result) {
+    return res.json({ status: "error", message: "Invalid email or password." });
   }
+  const accessToken = await createAccessToken(user.email, `${user._id}`);
+  const refreshToken = await createRefreshToken(user.email, `${user._id}`);
+  res.json({
+    status: "success",
+    message: "you logged in successfuly",
+    accessToken,
+    refreshToken,
+  });
 });
 module.exports = router;
