@@ -1,14 +1,19 @@
 
 #eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNDI4MDI1LCJleHAiOjE2MzA0Mjg5MjV9.51H0xmJSWwextHax8iXrjL0QZdjReNLXNOZLvmVwxiY
 
-POST http://localhost:3001/v1/user/login
-Content-Type: application/json
 
-{
+
+GET http://localhost:3001/v1/user
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNTIxODg2LCJleHAiOjE2MzA1MjI3ODZ9.QqlJZPH2uW5_l2_8mj1Gn3YqTyo_KJJt_69I5p1PEhE
+
+# POST http://localhost:3001/v1/user/login
+# Content-Type: application/json
+
+# {
     
-    "email": "kh.ramin69@gmail.com",
-    "password": "hhgj8876" 
-}
+#     "email": "kh.ramin69@gmail.com",
+#     "password": "hhgj8876" 
+# }
 
 
 

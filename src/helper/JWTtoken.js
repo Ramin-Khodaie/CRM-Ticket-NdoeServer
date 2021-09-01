@@ -23,7 +23,15 @@ const createRefreshToken = async (email, _id) => {
   }
 };
 
+const verifyToken = (jwtToken) => {
+  try {
+    return Promise.resolve(jwt.verify(jwtToken, "kjljasdfakljljdsflkj"));
+  } catch (error) {
+    return Promise.resolve(error);
+  }
+};
 module.exports = {
   createAccessToken,
   createRefreshToken,
+  verifyToken,
 };
