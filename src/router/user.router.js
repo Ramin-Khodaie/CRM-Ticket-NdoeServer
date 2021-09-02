@@ -13,6 +13,7 @@ const {
   createRefreshToken,
 } = require("../helper/JWTtoken");
 const { userAuthorization } = require("../helper/authorization");
+const { setPasswordResetPin } = require("../model/restPin/restPin.model");
 
 router.all("/", (req, res, next) => {
   next();
@@ -72,6 +73,25 @@ router.post("/login", async (req, res) => {
     message: "you logged in successfuly",
     accessToken,
     refreshToken,
+  });
+});
+
+//reset password
+router.post("/reset-password", async (req, res) => {
+  const { email } = req.body;
+
+  const user = await getUserByEmail(email);
+
+  if (user && user._id) {
+    const setPin = await setPasswordResetPin(email);
+    console.log(setPin);
+    return res.json(setPin);
+  }
+
+  res.json({
+    status: "error",
+    message:
+      "if the email is exist in database,the password reset pin will sent shortly.",
   });
 });
 module.exports = router;

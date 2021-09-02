@@ -1,34 +1,41 @@
 
-# ###request for authorization
-# GET http://localhost:3001/v1/user
-# Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNTIxODg2LCJleHAiOjE2MzA1MjI3ODZ9.QqlJZPH2uW5_l2_8mj1Gn3YqTyo_KJJt_69I5p1PEhE
+###get a user profile endpoint
+GET http://localhost:3001/v1/user
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNTIxODg2LCJleHAiOjE2MzA1MjI3ODZ9.QqlJZPH2uW5_l2_8mj1Gn3YqTyo_KJJt_69I5p1PEhE
 
 ###request for checking expire date of refresh token
 GET http://localhost:3001/v1/tokens
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNTg4NjU4LCJleHAiOjE2MzMxODA2NTh9.vYFJaaYjofb5PH_689h0zMaudj_yorMrs2HIZxC4tts"
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNTg5OTk2LCJleHAiOjE2MzMxODE5OTZ9.HKi7NTuya2F7w_Tf2rYdjtdFrUD3axdSUXfpeQfQBqw
 
 
 
-# ##request for login and create jwstoken
-# POST http://localhost:3001/v1/user/login
-# Content-Type: application/json
+### User sign in endpoint
+POST http://localhost:3001/v1/user/login
+Content-Type: application/json
 
-# {
+{
     
-#     "email": "kh.ramin69@gmail.com",
-#     "password": "hhgj8876" 
-# }
+    "email": "kh.ramin69@gmail.com",
+    "password": "hhgj8876" 
+}
 
 ###request for creat user and create refreshTken in mongo
-# POST http://localhost:3001/v1/user
-# Content-Type: application/json
+POST http://localhost:3001/v1/user
+Content-Type: application/json
 
-#   {
-#       "name": "Ramin khodaie",
-#     "compony": "bornamehrfan",
-#     "address": "tabriz",
-#     "phonenumber": "2345678",
-#     "email": "kh.ramin69@gmail.com",
-#     "password": "hhgj8876" 
-# }
+  {
+      "name": "Ramin khodaie",
+    "compony": "bornamehrfan",
+    "address": "tabriz",
+    "phonenumber": "2345678",
+    "email": "kh.ramin69@gmail.com",
+    "password": "hhgj8876" 
+}
 
+### Reset password endpoint
+POST http://localhost:3001/v1/user/reset-password
+Content-Type: application/json
+
+    {    
+    "email": "kh.ramin69@gmail.com",
+    }
