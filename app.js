@@ -39,11 +39,13 @@ app.use(bodyparser.json());
 
 const userRouter = require("./src/router/user.router");
 const ticketRouter = require("./src/router/ticket.router");
+const tokenRouter = require("./src/router/token.router");
 
 // app.use(helmet());
 app.use(cors());
 app.use("/v1/user", userRouter);
 app.use("/v1/ticket", ticketRouter);
+app.use("/v1/tokens", tokenRouter);
 app.use((req, res, next) => {
   const error = new Error("Resource not found");
   error.status = 404;

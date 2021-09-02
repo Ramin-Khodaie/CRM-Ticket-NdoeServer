@@ -23,9 +23,19 @@ const createRefreshToken = async (email, _id) => {
   }
 };
 
-const verifyToken = (jwtToken) => {
+//decode access token using token and access secret key
+const verifyAccessToken = (jwtToken) => {
   try {
     return Promise.resolve(jwt.verify(jwtToken, "kjljasdfakljljdsflkj"));
+  } catch (error) {
+    return Promise.resolve(error);
+  }
+};
+
+//decode refresh token using token and refresh secret key
+const verifyRefreshToken = (jwtToken) => {
+  try {
+    return Promise.resolve(jwt.verify(jwtToken, "jkafsjkljfasfaskl"));
   } catch (error) {
     return Promise.resolve(error);
   }
@@ -33,5 +43,6 @@ const verifyToken = (jwtToken) => {
 module.exports = {
   createAccessToken,
   createRefreshToken,
-  verifyToken,
+  verifyAccessToken,
+  verifyRefreshToken,
 };

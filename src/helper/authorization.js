@@ -1,11 +1,11 @@
-const { verifyToken } = require("./JWTtoken");
-const { getJWT } = require("./redis");
+const { verifyAccessToken } = require("./JWTtoken");
+const { getJWT, deleteJWT } = require("./redis");
 
 //middlware to authorize a user with specific token,if token is valid it will return corresponding userid.
 const userAuthorization = async (req, res, next) => {
   const { authorization } = req.headers;
 
-  const decode = await verifyToken(authorization);
+  const decode = await verifyAccessToken(authorization);
   if (decode.email) {
     const userId = await getJWT(authorization);
 
@@ -16,6 +16,8 @@ const userAuthorization = async (req, res, next) => {
     req.userId = userId;
     return next();
   }
+
+  deleteJWT(authorization);
 };
 
 module.exports = {

@@ -1,11 +1,15 @@
 
-#eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNDI4MDI1LCJleHAiOjE2MzA0Mjg5MjV9.51H0xmJSWwextHax8iXrjL0QZdjReNLXNOZLvmVwxiY
+# ###request for authorization
+# GET http://localhost:3001/v1/user
+# Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNTIxODg2LCJleHAiOjE2MzA1MjI3ODZ9.QqlJZPH2uW5_l2_8mj1Gn3YqTyo_KJJt_69I5p1PEhE
+
+###request for checking expire date of refresh token
+GET http://localhost:3001/v1/tokens
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNTg4NjU4LCJleHAiOjE2MzMxODA2NTh9.vYFJaaYjofb5PH_689h0zMaudj_yorMrs2HIZxC4tts"
 
 
 
-GET http://localhost:3001/v1/user
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNTIxODg2LCJleHAiOjE2MzA1MjI3ODZ9.QqlJZPH2uW5_l2_8mj1Gn3YqTyo_KJJt_69I5p1PEhE
-
+# ##request for login and create jwstoken
 # POST http://localhost:3001/v1/user/login
 # Content-Type: application/json
 
@@ -15,8 +19,7 @@ Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ
 #     "password": "hhgj8876" 
 # }
 
-
-
+###request for creat user and create refreshTken in mongo
 # POST http://localhost:3001/v1/user
 # Content-Type: application/json
 
