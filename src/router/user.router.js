@@ -5,6 +5,7 @@ const {
   insertUser,
   getUserByEmail,
   getUserByuserId,
+  deleteRefreshToken,
 } = require("../model/user/user.model");
 const { emailProcessor } = require("../helper/mail");
 const {
@@ -13,6 +14,7 @@ const {
   createAccessToken,
   createRefreshToken,
 } = require("../helper/JWTtoken");
+const { deleteJWT } = require("../helper/redis");
 
 const { userAuthorization } = require("../helper/authorization");
 const { setPasswordResetPin } = require("../model/restPin/restPin.model");
@@ -53,7 +55,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-//login user
+//login user router
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -78,8 +80,7 @@ router.post("/login", async (req, res) => {
   });
 });
 
-//reset password
-
+//reset password router
 router.post("/reset-password", async (req, res) => {
   const { email } = req.body;
 
@@ -99,6 +100,25 @@ router.post("/reset-password", async (req, res) => {
     status: "success",
     message:
       "If the email is exist in our database, the password reset pin will be sent shortly.",
+  });
+});
+
+//user logout router
+router.delete("/logout", userAuthorization, async (req, res) => {
+  const { authorization } = req.headers;
+
+  const userId = req.userId;
+
+  deleteJWT(authorization);
+
+  const user = await deleteRefreshToken(userId, "");
+
+  if (user._id) {
+    res.json({ status: "success", message: "logout successfuly.", user });
+  }
+  res.json({
+    status: "error",
+    message: "you cannot logged out,plz try again.",
   });
 });
 module.exports = router;

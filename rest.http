@@ -1,25 +1,25 @@
 
-###get a user profile endpoint
-GET http://localhost:3001/v1/user
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNTIxODg2LCJleHAiOjE2MzA1MjI3ODZ9.QqlJZPH2uW5_l2_8mj1Gn3YqTyo_KJJt_69I5p1PEhE
+# ###get a user profile endpoint
+# GET http://localhost:3001/v1/user
+# Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNTIxODg2LCJleHAiOjE2MzA1MjI3ODZ9.QqlJZPH2uW5_l2_8mj1Gn3YqTyo_KJJt_69I5p1PEhE
 
-###request for checking expire date of refresh token
-GET http://localhost:3001/v1/tokens
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNTg5OTk2LCJleHAiOjE2MzMxODE5OTZ9.HKi7NTuya2F7w_Tf2rYdjtdFrUD3axdSUXfpeQfQBqw
+# ###request for checking expire date of refresh token
+# GET http://localhost:3001/v1/tokens
+# Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNTg5OTk2LCJleHAiOjE2MzMxODE5OTZ9.HKi7NTuya2F7w_Tf2rYdjtdFrUD3axdSUXfpeQfQBqw
 
 
 
-### User sign in endpoint
-POST http://localhost:3001/v1/user/login
-Content-Type: application/json
+# ### User log in endpoint
+# POST http://localhost:3001/v1/user/login
+# Content-Type: application/json
 
-{
+# {
     
-    "email": "kh.ramin69@gmail.com",
-    "password": "hhgj8876" 
-}
+#     "email": "kh.ramin69@gmail.com",
+#     "password": "hhgj8876" 
+# }
 
-###request for creat user and create refreshTken in mongo
+# ###request for creat user and create refreshTken in mongo
 POST http://localhost:3001/v1/user
 Content-Type: application/json
 
@@ -32,10 +32,14 @@ Content-Type: application/json
     "password": "hhgj8876" 
 }
 
-### Reset password endpoint
-POST http://localhost:3001/v1/user/reset-password
-Content-Type: application/json
+# ### Reset password endpoint
+# POST http://localhost:3001/v1/user/reset-password
+# Content-Type: application/json
 
-{    
-    "email": "kh.ramin69@gmail.com",
-}
+# {    
+#     "email": "kh.ramin69@gmail.com",
+# }
+
+# DELETE http://localhost:3001/v1/user/logout
+# Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNzc5NDEzLCJleHAiOjE2MzA3ODAzMTN9.3yg9iO6r3js4XplYbBwyTdHY8039IDKBJdOgfM8zvxs
+

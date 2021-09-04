@@ -8,7 +8,7 @@ const userAuthorization = async (req, res, next) => {
   const decode = await verifyAccessToken(authorization);
   if (decode.email) {
     const userId = await getJWT(authorization);
-
+    console.log(userId);
     if (!userId) {
       return res.status(403).json({ message: "Forbbiden" });
     }
