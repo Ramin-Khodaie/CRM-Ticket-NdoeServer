@@ -6,12 +6,14 @@ const {
   getUserByEmail,
   getUserByuserId,
 } = require("../model/user/user.model");
+const { emailProcessor } = require("../helper/mail");
 const {
   accessToken,
   refreshToken,
   createAccessToken,
   createRefreshToken,
 } = require("../helper/JWTtoken");
+
 const { userAuthorization } = require("../helper/authorization");
 const { setPasswordResetPin } = require("../model/restPin/restPin.model");
 
@@ -77,21 +79,26 @@ router.post("/login", async (req, res) => {
 });
 
 //reset password
+
 router.post("/reset-password", async (req, res) => {
   const { email } = req.body;
 
   const user = await getUserByEmail(email);
 
   if (user && user._id) {
+    /// crate// 2. create unique 6 digit pin
     const setPin = await setPasswordResetPin(email);
-    console.log(setPin);
-    return res.json(setPin);
+    await emailProcessor({
+      email,
+      pin: setPin.pin,
+      type: "request-new-password",
+    });
   }
 
   res.json({
-    status: "error",
+    status: "success",
     message:
-      "if the email is exist in database,the password reset pin will sent shortly.",
+      "If the email is exist in our database, the password reset pin will be sent shortly.",
   });
 });
 module.exports = router;

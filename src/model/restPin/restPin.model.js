@@ -3,7 +3,7 @@ const { randomPin } = require("../../router/utils/randomGenerator");
 
 //add new user to mongodb
 const setPasswordResetPin = async (email) => {
-  //create pin
+  //create random pin
   const pinLength = 6;
   const restPin = await randomPin(pinLength);
 
