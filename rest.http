@@ -10,27 +10,27 @@
 
 
 # ### User log in endpoint
-# POST http://localhost:3001/v1/user/login
-# Content-Type: application/json
-
-# {
-    
-#     "email": "kh.ramin69@gmail.com",
-#     "password": "hhgj8876" 
-# }
-
-# ###request for creat user and create refreshTken in mongo
-POST http://localhost:3001/v1/user
+POST http://localhost:3001/v1/user/login
 Content-Type: application/json
 
-  {
-      "name": "Ramin khodaie",
-    "compony": "bornamehrfan",
-    "address": "tabriz",
-    "phonenumber": "2345678",
+{
+    
     "email": "kh.ramin69@gmail.com",
     "password": "hhgj8876" 
 }
+
+# # ###request for creat user and create refreshTken in mongo
+# POST http://localhost:3001/v1/user
+# Content-Type: application/json
+
+#   {
+#       "name": "Ramin khodaie",
+#     "compony": "bornamehrfan",
+#     "address": "tabriz",
+#     "phonenumber": "2345678",
+#     "email": "kh.ramin69@gmail.com",
+#     "password": "hhgj8876" 
+# }
 
 # ### Reset password endpoint
 # POST http://localhost:3001/v1/user/reset-password
@@ -41,5 +41,5 @@ Content-Type: application/json
 # }
 
 # DELETE http://localhost:3001/v1/user/logout
-# Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNzc5NDEzLCJleHAiOjE2MzA3ODAzMTN9.3yg9iO6r3js4XplYbBwyTdHY8039IDKBJdOgfM8zvxs
+# Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtoLnJhbWluNjlAZ21haWwuY29tIiwiaWF0IjoxNjMwNzgwMTUxLCJleHAiOjE2MzA3ODEwNTF9.ROslXVqhdu8jsc6NPmcdVHs5L04PdJx9g1nOH-elDWo
 

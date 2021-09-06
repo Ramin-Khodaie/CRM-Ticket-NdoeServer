@@ -18,6 +18,7 @@ const userAuthorization = async (req, res, next) => {
   }
 
   deleteJWT(authorization);
+  return res.status(403).json({ message: "Forbiden" });
 };
 
 module.exports = {

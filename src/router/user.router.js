@@ -121,4 +121,5 @@ router.delete("/logout", userAuthorization, async (req, res) => {
     message: "you cannot logged out,plz try again.",
   });
 });
+
 module.exports = router;

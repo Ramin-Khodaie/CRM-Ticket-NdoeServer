@@ -1,7 +1,7 @@
 const { restPinSchema } = require("./restPin.schema");
 const { randomPin } = require("../../router/utils/randomGenerator");
 
-//add new user to mongodb
+//add new pin with user email to mongodb
 const setPasswordResetPin = async (email) => {
   //create random pin
   const pinLength = 6;

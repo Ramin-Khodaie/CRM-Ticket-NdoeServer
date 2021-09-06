@@ -38,7 +38,7 @@ const getUserByuserId = (_id) => {
   });
 };
 
-//add refresh token to specific user defined by _id
+//add refresh token to specific user defined by _id,it is addee when new user is created.
 const addRefreshToken = (_id, token) => {
   return new Promise((resolve, reject) => {
     try {
@@ -61,6 +61,7 @@ const addRefreshToken = (_id, token) => {
   });
 };
 
+//delete refresh token and it used when logout happen.
 const deleteRefreshToken = (_id, token) => {
   return new Promise((resolve, reject) => {
     try {
