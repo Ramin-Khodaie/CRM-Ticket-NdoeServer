@@ -9,6 +9,10 @@ const {
   updateStatusClose,
   deletTicketbyid,
 } = require("../model/ticket/ticket.model");
+const {
+  createTicketValidation,
+  replyTicketValidation,
+} = require("../helper/ticketValidation");
 
 // router.all("/", (req, res, next) => {
 //   res.json({ message: "this is ticket route" });
@@ -16,30 +20,35 @@ const {
 // });
 
 //add new ticket, for authorization we use user id to confirm user is auhtorized.
-router.post("/newticket", userAuthorization, async (req, res) => {
-  const { subject, message, sender } = req.body;
-  const userId = req.userId;
+router.post(
+  "/newticket",
+  // createTicketValidation,s
+  userAuthorization,
+  async (req, res) => {
+    const { subject, message, sender } = req.body;
+    const userId = req.userId;
 
-  const ticket = {
-    subject,
-    clientId: userId,
-    message,
-    conversation: [{ sender, message }],
-  };
+    const ticket = {
+      subject,
+      clientId: userId,
+      message,
+      conversation: [{ sender, message }],
+    };
 
-  const result = await insertTicket(ticket);
+    const result = await insertTicket(ticket);
 
-  if (result._id) {
-    return res.json({
-      status: "success",
-      message: "New ticket added successfuly.",
+    if (result._id) {
+      return res.json({
+        status: "success",
+        message: "New ticket added successfuly.",
+      });
+    }
+    res.json({
+      status: "error",
+      message: "error in adding new ticket,plz try agein.",
     });
   }
-  res.json({
-    status: "error",
-    message: "error in adding new ticket,plz try agein.",
-  });
-});
+);
 
 //get all tickets of a user, for authorization we use user id to confirm user is auhtorized.
 router.get("/", userAuthorization, async (req, res) => {
@@ -66,26 +75,30 @@ router.get("/:_id", userAuthorization, async (req, res) => {
 });
 
 //update reply of ticket(message and sender) ,for authorization we use user id to confirm user is auhtorized.
-router.put("/:_id", userAuthorization, async (req, res) => {
-  const { _id } = req.params;
-  const clientId = req.userId;
-  console.log(clientId);
+router.put(
+  "/:_id",
+  // replyTicketValidation,
+  userAuthorization,
+  async (req, res) => {
+    const { _id } = req.params;
+    const clientId = req.userId;
 
-  const { message, sender } = req.body;
+    const { message, sender } = req.body;
 
-  const result = await updateTicket(_id, clientId, message, sender);
+    const result = await updateTicket(_id, clientId, message, sender);
 
-  if (result._id) {
-    return res.json({
-      status: "success",
-      message: "ticket updated successfuly.",
+    if (result._id) {
+      return res.json({
+        status: "success",
+        message: "ticket updated successfuly.",
+      });
+    }
+    res.json({
+      status: "error",
+      result,
     });
   }
-  res.json({
-    status: "error",
-    result,
-  });
-});
+);
 //update tickes's status to close,for authorization we use user id to confirm user is auhtorized.
 router.patch("/ticketclose/:_id", userAuthorization, async (req, res) => {
   try {
