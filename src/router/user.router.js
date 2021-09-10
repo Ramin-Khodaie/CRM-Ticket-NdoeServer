@@ -29,8 +29,14 @@ router.get("/", userAuthorization, async (req, res) => {
   const _id = req.userId;
 
   const userProfile = await getUserByuserId(_id);
-
-  res.json({ user: userProfile });
+  const { name, email } = userProfile;
+  res.json({
+    user: {
+      _id,
+      name,
+      email,
+    },
+  });
 });
 
 //create new user
