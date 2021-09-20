@@ -41,12 +41,13 @@ router.get("/", userAuthorization, async (req, res) => {
 
 //create new user
 router.post("/", async (req, res) => {
-  const { name, compony, address, phonenumber, email, password } = req.body;
+  const { name, company, address, phonenumber, email, password } = req.body;
   const newPasword = await hashedPasword(password);
+  console.log(200, req.body);
   try {
     const newObject = {
       name,
-      compony,
+      company,
       address,
       phonenumber,
       email,
@@ -56,7 +57,7 @@ router.post("/", async (req, res) => {
 
     res.json({ message: "New user added", result });
   } catch (err) {
-    console.log(700, "hahaha");
+    console.log(700, err);
     res.json({ status: "error", message: err.message });
   }
 });

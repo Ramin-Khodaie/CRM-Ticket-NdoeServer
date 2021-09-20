@@ -42,6 +42,9 @@ const getTicketbyId = (_id, clientId) => {
 const updateTicket = (_id, clientId, message, sender) => {
   try {
     return new Promise((resolve, reject) => {
+      if (message === "") {
+        reject(error);
+      }
       ticketSchema
         .findOneAndUpdate(
           { _id, clientId },

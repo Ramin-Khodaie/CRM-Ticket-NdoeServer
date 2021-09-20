@@ -7,7 +7,7 @@ const userSchema = new Schema({
     maxlength: 50,
     required: true,
   },
-  compony: {
+  company: {
     type: String,
     maxlength: 50,
     required: true,
